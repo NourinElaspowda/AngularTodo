@@ -1,0 +1,29 @@
+<h3><b>COMPLETED</b></h3>
+<hr style="border:2px solid black;" />
+<div class="container">
+  <div *ngFor="let completed of todoarray">
+    <table>
+      <tr *ngIf="completed.complete">
+        <td width="10%">
+          <input *ngIf="!completed.edit" checked type="checkbox" (click)="chcompleted(completed.index)">
+        </td>
+        <td width="50%">
+          <p id="com" *ngIf="!completed.edit">{{completed.value}} </p>
+          <p id="com" *ngIf="completed.edit">
+            <input type="text" [(ngModel)]="completed.value" (ngModelChange)="btndis(completed.value)" name="edittodo">
+          </p>
+        </td>
+        <td width="20%" *ngIf="!completed.edit">
+          <button type="button" class="btn btn-default" (click)="editItem(completed.index)">edit</button>
+        </td>
+        <td width="20%"*ngIf="completed.edit && nodata">
+          <button type="button" class="btn btn-default" (click)="saveItem(completed.value,completed.index)">save</button>
+        </td>
+        <td >
+          <button type="button" class="btn btn-default" (click)="deleteItem(completed.index)">delete</button>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

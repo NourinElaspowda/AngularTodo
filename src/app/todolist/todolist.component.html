@@ -1,0 +1,31 @@
+<br><br>
+<h3 id="h3"><b>TODO</b></h3>
+<hr style="border:2px solid black;" />
+<div class="container">
+  <div *ngFor="let todo of todoarray ">
+    <table>
+      <tr *ngIf="!todo.complete">
+        <td width="10%">
+          <input *ngIf="!todo.edit" type="checkbox" (click)="checkboxclicked(todo.index)">
+        </td>
+        <td width="50%">
+          <p *ngIf="!todo.edit"> {{todo.value}}</p>
+          <p *ngIf="todo.edit">
+            <input type="text" width="50%" [(ngModel)]="todo.value" (ngModelChange)="btndis(todo.value,todo.index)" name="edittodo">
+          </p>
+        </td>
+        <td width="20%" *ngIf="!todo.edit">
+          <button type="button" class="btn btn-default" (click)="editItem(todo.index)">edit</button>
+        </td>
+        <td width="20%" *ngIf="todo.edit && todo.btn">
+          <button type="button" class="btn btn-default" (click)="saveItem(todo.value,todo.index)">save</button>
+        </td>
+        <td >
+          <button type="button" class="btn btn-default" (click)="deleteItem(todo.index)">delete</button>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
